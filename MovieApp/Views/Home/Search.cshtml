@@ -1,6 +1,23 @@
-﻿@model List<SearchResponse>
+﻿@model MovieApp.Models.SearchData
 
-@foreach(SearchResponse Movie in Model)
-{
-	<div>@Movie.Title</div>
-}
+
+<h2>Search results for "<strong>@Model.Expression</strong>"</h2>
+
+<div class="d-flex flex-wrap w-100">
+	@foreach (var Movie in Model.Results)
+	{
+		<div class="p-2 d-flex flex-row w-50 border border-secondary">
+			<div class="py-2 w-25 d-flex justify-content-center align-items-center">
+				<img class="w-75 " src="@Movie.Image"/>
+			</div>
+			<div class="w-75 d-flex flex-column justify-content-center align-items-center">
+				<div class="fs-4">@Movie.Title</div>
+				<div class="fs-5">@Movie.Description</div>
+				<div>
+					<button>add to watchlist</button>
+					<button>favorite !</button>
+				</div>
+			</div>
+		</div>
+	}
+</div>

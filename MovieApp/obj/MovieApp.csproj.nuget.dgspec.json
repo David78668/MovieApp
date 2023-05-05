@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\davek\\source\\repos\\MovieApp\\MovieApp\\MovieApp.csproj": {}
+    "C:\\Users\\davek\\Desktop\\MovieApp\\MovieApp\\MovieApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\davek\\source\\repos\\MovieApp\\MovieApp\\MovieApp.csproj": {
+    "C:\\Users\\davek\\Desktop\\MovieApp\\MovieApp\\MovieApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\davek\\source\\repos\\MovieApp\\MovieApp\\MovieApp.csproj",
+        "projectUniqueName": "C:\\Users\\davek\\Desktop\\MovieApp\\MovieApp\\MovieApp.csproj",
         "projectName": "MovieApp",
-        "projectPath": "C:\\Users\\davek\\source\\repos\\MovieApp\\MovieApp\\MovieApp.csproj",
+        "projectPath": "C:\\Users\\davek\\Desktop\\MovieApp\\MovieApp\\MovieApp.csproj",
         "packagesPath": "C:\\Users\\davek\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\davek\\source\\repos\\MovieApp\\MovieApp\\obj\\",
+        "outputPath": "C:\\Users\\davek\\Desktop\\MovieApp\\MovieApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\davek\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kxCa2WD+wUIbspXHXv3ehLRfd3TmnwUFPI+Hl784x4kmgiRgz/0NMQ0W3wXPNbjWlXBws+dEPhJvf5DmQlpuzA==",
+  "dgSpecHash": "2BmDaFI9H8PVo4yu6diPxYFStMWqBUlr7/ZLG0MlqNBxrc1v54uO6F0nzUKQLygFD1ErNMFs/9SQEihHc2h0xA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\davek\\source\\repos\\MovieApp\\MovieApp\\MovieApp.csproj",
+  "projectFilePath": "C:\\Users\\davek\\Desktop\\MovieApp\\MovieApp\\MovieApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\davek\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.0\\microsoft.visualstudio.azure.containers.tools.targets.1.17.0.nupkg.sha512"
   ],

@@ -28,8 +28,8 @@ namespace MovieApp.Controllers
 
         public IActionResult Search(string input)
         {
-            List<SearchResponse> Movies = (List<SearchResponse>)_api.Search(input).Result;
-            return View(Movies);
+            var data = _api.Search(input).GetAwaiter().GetResult();
+            return View(data);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -37,6 +37,5 @@ namespace MovieApp.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
     }
 }
