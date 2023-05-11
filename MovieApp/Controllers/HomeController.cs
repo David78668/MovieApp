@@ -28,8 +28,14 @@ namespace MovieApp.Controllers
 
         public IActionResult Search(string input)
         {
-            var data = _api.Search(input).GetAwaiter().GetResult();
-            return View(data);
+            var searchData = _api.Search(input).GetAwaiter().GetResult();
+            return View(searchData);
+        }
+
+        public IActionResult Detail(string id)
+        {
+            var movieData = _api.GetMovie(id).GetAwaiter().GetResult();
+            return View(movieData);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

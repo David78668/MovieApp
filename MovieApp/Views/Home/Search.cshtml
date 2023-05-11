@@ -1,8 +1,6 @@
 ﻿@model MovieApp.Models.SearchData
 
-
 <h2>Search results for "<strong>@Model.Expression</strong>"</h2>
-
 <div class="d-flex flex-wrap w-100">
 	@foreach (var Movie in Model.Results)
 	{
@@ -13,6 +11,8 @@
 			<div class="w-75 d-flex flex-column justify-content-center align-items-center">
 				<div class="fs-4">@Movie.Title</div>
 				<div class="fs-5">@Movie.Description</div>
+				<div>@Movie.ResultType</div>
+				<a href="/Home/Detail?id=@Movie.Id">Show details...</a>
 				<div>
 					<button>add to watchlist</button>
 					<button>favorite !</button>

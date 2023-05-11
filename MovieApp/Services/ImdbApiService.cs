@@ -17,11 +17,17 @@ namespace MovieApp.Services
             _logger = logger;
         }
 
-        // Function that searches for movies using the Download function
+        // Function that searches for titles using the Download function
         public async Task<SearchData> Search(string input)
         {
             return await Download<SearchData>($"https://imdb-api.com/en/API/Search/k_4556bqwf/{input}");
         }
+
+		// Function that downloads for information about a specific title by Id
+		public async Task<TitleData.TitleResponse> GetMovie(string id)
+		{
+			return await Download<TitleData>($"https://imdb-api.com/en/API/Title/k_4556bqwf/{id}/FullActor,FullCast,Posters,Images,Trailer,Ratings,Wikipedia,");
+		}
 
         // Function for downloading data from the API using HttpClient
         private async Task<T?> Download<T>(string url)
