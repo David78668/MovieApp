@@ -6,16 +6,28 @@
 	{
 		<div class="p-2 d-flex flex-row w-50 border border-secondary">
 			<div class="py-2 w-25 d-flex justify-content-center align-items-center">
-				<img class="w-75 " src="@Movie.Image"/>
+				@if(Movie.Image != "")
+				{
+					<img class="w-75 " src="@Movie.Image"/>
+				}
+				else
+				{
+					<img class="w-75" src="https://static.displate.com/857x1200/displate/2022-04-15/7422bfe15b3ea7b5933dffd896e9c7f9_46003a1b7353dc7b5a02949bd074432a.jpg" />
+				}
 			</div>
 			<div class="w-75 d-flex flex-column justify-content-center align-items-center">
 				<div class="fs-4">@Movie.Title</div>
 				<div class="fs-5">@Movie.Description</div>
 				<div>@Movie.ResultType</div>
-				<a href="/Home/Detail?id=@Movie.Id">Show details...</a>
 				<div>
-					<button>add to watchlist</button>
-					<button>favorite !</button>
+					<a href="/Home/Detail?id=@Movie.Id">Show details...</a>
+					<form method="post" asp-action="AddToWatchlist">
+						@Html.Hidden("Id", Movie.Id)
+						@Html.Hidden("Title", Movie.Title)
+						@Html.Hidden("Description", Movie.Description)
+						@Html.Hidden("Image", Movie.Image)
+						<button type="submit">Add to watchlist</button>
+					</form>
 				</div>
 			</div>
 		</div>

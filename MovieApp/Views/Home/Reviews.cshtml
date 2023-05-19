@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Http
+@model List<Review>
+
+<div>
+	Reviews for @Context.Request.Query["movie"].ToString().Replace("%20", " ")
+</div>
+
+@if(Model.Count <= 0)
+{
+	<div>
+		<h2>There are no reviews for this movie...</h2>
+	</div>
+}
+else
+{
+	@foreach (Review review in Model)
+	{
+		<div>
+			@review.Rating
+			@review.Review1
+		</div>
+	}
+}
+<form method="post" asp-action="WriteReview">
+	<input name="ImdbId" type="hidden" value="@Context.Request.Query["id"]" />
+	<input name="review1" placeholder="Review..." type="text" />
+	<input name="rating" value="5" type="number" min="1" max="5" onkeydown="return false" />
+	<button type="submit">Review</button>
+</form>

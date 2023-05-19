@@ -1,11 +1,15 @@
+using MovieApp.Controllers;
+using MovieApp.Models;
 using MovieApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<ImdbApiService, ImdbApiService>();
-
+builder.Services.AddScoped<ImdbApiService>();
+builder.Services.AddScoped<DatabaseService>();
+builder.Services.AddScoped<MovieApiController>();
+builder.Services.AddDbContext<MovieAppDbContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

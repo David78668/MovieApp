@@ -4,4 +4,5 @@
 	<h1>@Model.Title</h1>
 	<h2>@Model.Directors</h2>
 	<h3>@Model.Plot</h3>
+	<a href="/Home/Reviews?id=@Model.Id&movie=@System.Web.HttpUtility.UrlEncode(Model.Title)"><button>Show reviews</button></a>
 </div>
