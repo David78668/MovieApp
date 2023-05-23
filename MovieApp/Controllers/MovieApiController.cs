@@ -4,7 +4,11 @@ using MovieApp.Services;
 
 namespace MovieApp.Controllers
 {
+<<<<<<< HEAD
     [ApiController]
+=======
+	[ApiController]
+>>>>>>> a8ed6b4471308c552fab4e9b303e26967f16785c
 	[Route("movie")]
 	public class MovieApiController : Controller
 	{

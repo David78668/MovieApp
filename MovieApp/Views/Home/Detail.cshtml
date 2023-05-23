@@ -1,5 +1,6 @@
 ﻿@model ApiTitleData.TitleResponse
 
+<<<<<<< HEAD
 <style>
 	.movie-title{
 		font-size: 40px;
@@ -50,4 +51,11 @@
 			</form>
 		</div>
 	</div>
+=======
+<div>
+	<h1>@Model.Title</h1>
+	<h2>@Model.Directors</h2>
+	<h3>@Model.Plot</h3>
+	<a href="/Home/Reviews?id=@Model.Id&movie=@System.Web.HttpUtility.UrlEncode(Model.Title)"><button>Show reviews</button></a>
+>>>>>>> a8ed6b4471308c552fab4e9b303e26967f16785c
 </div>

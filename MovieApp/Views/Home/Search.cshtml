@@ -1,5 +1,6 @@
 ﻿@model ApiSearchData
 
+<<<<<<< HEAD
 <style>
     .col-md-5{
         background-color: #181818;
@@ -9,6 +10,40 @@
 
 <div class="text-center py-4">
     <h2>Search results for "<strong>@Model.Expression</strong>"</h2>
+=======
+<h2>Search results for "<strong>@Model.Expression</strong>"</h2>
+<div class="d-flex flex-wrap w-100">
+	@foreach (var Movie in Model.Results)
+	{
+		<div class="p-2 d-flex flex-row w-50 border border-secondary">
+			<div class="py-2 w-25 d-flex justify-content-center align-items-center">
+				@if(Movie.Image != "")
+				{
+					<img class="w-75 " src="@Movie.Image"/>
+				}
+				else
+				{
+					<img class="w-75" src="https://static.displate.com/857x1200/displate/2022-04-15/7422bfe15b3ea7b5933dffd896e9c7f9_46003a1b7353dc7b5a02949bd074432a.jpg" />
+				}
+			</div>
+			<div class="w-75 d-flex flex-column justify-content-center align-items-center">
+				<div class="fs-4">@Movie.Title</div>
+				<div class="fs-5">@Movie.Description</div>
+				<div>@Movie.ResultType</div>
+				<div>
+					<a href="/Home/Detail?id=@Movie.Id">Show details...</a>
+					<form method="post" asp-action="AddToWatchlist">
+						@Html.Hidden("Id", Movie.Id)
+						@Html.Hidden("Title", Movie.Title)
+						@Html.Hidden("Description", Movie.Description)
+						@Html.Hidden("Image", Movie.Image)
+						<button type="submit">Add to watchlist</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	}
+>>>>>>> a8ed6b4471308c552fab4e9b303e26967f16785c
 </div>
 <div class="container">
     <div class="row d-flex flex-row justify-content-evenly">

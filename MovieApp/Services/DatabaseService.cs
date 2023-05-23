@@ -11,11 +11,19 @@ namespace MovieApp.Services
 		{
 			_database = database;
 		}
+<<<<<<< HEAD
 
 		//Function for returning every movie from the watchlist
 		public List<Watchlist> GetWatchlist()
 		{
 			return (_database.Watchlists.ToList());
+=======
+		
+		//Function for returning every movie from the watchlist
+		public List<Watchlist> GetWatchlist()
+		{
+			return(_database.Watchlists.ToList());
+>>>>>>> a8ed6b4471308c552fab4e9b303e26967f16785c
 		}
 
 		//Function for adding a movie to the watchlist
@@ -28,7 +36,11 @@ namespace MovieApp.Services
 		//Function for getting all reviews of a specific movie by the ImdbID
 		public List<Review> GetReviews(string id)
 		{
+<<<<<<< HEAD
 			return (_database.Reviews.Where(r => r.ImdbId == id).ToList());
+=======
+			return(_database.Reviews.Where(r => r.ImdbId == id).ToList());
+>>>>>>> a8ed6b4471308c552fab4e9b303e26967f16785c
 		}
 
 		//Function for adding a review to a movie
@@ -37,6 +49,7 @@ namespace MovieApp.Services
 			_database.Reviews.Add(review);
 			_database.SaveChanges();
 		}
+<<<<<<< HEAD
 
 		//Function fro removing movies from the watchlist
 		public void RemoveFromWatchlist(int id)
@@ -56,5 +69,7 @@ namespace MovieApp.Services
 			}
 			_database.SaveChanges();
 		}
+=======
+>>>>>>> a8ed6b4471308c552fab4e9b303e26967f16785c
 	}
 }

@@ -17,8 +17,11 @@ public partial class MovieAppDbContext : DbContext
 
     public virtual DbSet<Review> Reviews { get; set; }
 
+<<<<<<< HEAD
     public virtual DbSet<TopMovies> TopMovies { get; set; }
 
+=======
+>>>>>>> a8ed6b4471308c552fab4e9b303e26967f16785c
     public virtual DbSet<Watchlist> Watchlists { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -34,6 +37,7 @@ public partial class MovieAppDbContext : DbContext
             entity.Property(e => e.Review1).HasColumnName("Review");
         });
 
+<<<<<<< HEAD
         modelBuilder.Entity<TopMovies>(entity =>
         {
             entity.Property(e => e.Id).HasColumnName("id");
@@ -44,6 +48,8 @@ public partial class MovieAppDbContext : DbContext
             entity.Property(e => e.Year).HasMaxLength(50);
         });
 
+=======
+>>>>>>> a8ed6b4471308c552fab4e9b303e26967f16785c
         modelBuilder.Entity<Watchlist>(entity =>
         {
             entity.ToTable("Watchlist");

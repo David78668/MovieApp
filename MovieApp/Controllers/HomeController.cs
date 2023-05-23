@@ -13,11 +13,19 @@ namespace MovieApp.Controllers
         private readonly ImdbApiService _api;
         private readonly DatabaseService _databaseService;
         private readonly MovieApiController _databaseApi;
+<<<<<<< HEAD
 
         public HomeController(
             ILogger<HomeController> logger,
             ImdbApiService api,
             DatabaseService databaseService,
+=======
+        
+		public HomeController(
+            ILogger<HomeController> logger, 
+            ImdbApiService api, 
+            DatabaseService databaseService, 
+>>>>>>> a8ed6b4471308c552fab4e9b303e26967f16785c
             MovieApiController databaseApi)
         {
             _logger = logger;
@@ -50,6 +58,7 @@ namespace MovieApp.Controllers
 
         public IActionResult Watchlist()
         {
+<<<<<<< HEAD
             return View(_databaseService.GetWatchlist());
         }
 
@@ -58,18 +67,31 @@ namespace MovieApp.Controllers
             var topMovies = _api.GetTop250Movies().GetAwaiter().GetResult();
             return View(topMovies);
         }
+=======
+			return View(_databaseService.GetWatchlist());
+		}
+>>>>>>> a8ed6b4471308c552fab4e9b303e26967f16785c
 
         public IActionResult Reviews(string id, string movie)
         {
             return View(_databaseService.GetReviews(id));
         }
 
+<<<<<<< HEAD
         public IActionResult WriteReview(string id)
         {
             return View(_databaseService.GetReviews(id));
         }
 
         [HttpPost]
+=======
+		public IActionResult WriteReview(string id)
+		{
+			return View(_databaseService.GetReviews(id));
+		}
+
+		[HttpPost]
+>>>>>>> a8ed6b4471308c552fab4e9b303e26967f16785c
         public IActionResult AddToWatchlist(string Id, string Title, string Description, string Image)
         {
             Watchlist Movie = new() { ImdbId = Id, Title = Title, Description = Description, Image = Image };
@@ -78,6 +100,7 @@ namespace MovieApp.Controllers
         }
 
         [HttpPost]
+<<<<<<< HEAD
         public IActionResult RemoveFromWatchlist(int id)
         {
             _databaseService.RemoveFromWatchlist(id);
@@ -99,6 +122,14 @@ namespace MovieApp.Controllers
             _databaseService.SaveTopMovies(apiTopMovies);
             return RedirectToAction("TopMovies");
         }
+=======
+        public IActionResult WriteReview(string ImdbId, int rating, string review1) 
+        {
+            Review review = new() { ImdbId = ImdbId, Rating = rating, Review1 = review1 };
+            _databaseService.AddReview(review);
+			return Redirect($"Reviews?id={ImdbId}");
+		}
+>>>>>>> a8ed6b4471308c552fab4e9b303e26967f16785c
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

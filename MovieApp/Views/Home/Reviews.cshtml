@@ -1,6 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Http
 @model List<Review>
 
+<<<<<<< HEAD
 <style>
 	.movie-title{
 		font-size: 30px;
@@ -55,19 +56,29 @@
 </style>
 <div class="movie-title py-4 text-center">
 	Reviews for "<strong>@Context.Request.Query["movie"].ToString().Replace("%20", " ")</strong>"
+=======
+<div>
+	Reviews for @Context.Request.Query["movie"].ToString().Replace("%20", " ")
+>>>>>>> a8ed6b4471308c552fab4e9b303e26967f16785c
 </div>
 
 @if(Model.Count <= 0)
 {
+<<<<<<< HEAD
 	<div class="text-center py-5 display-6">
 		<p>There are no reviews for this title...</p>
 		<p>Be the first one to write one !</p>
+=======
+	<div>
+		<h2>There are no reviews for this movie...</h2>
+>>>>>>> a8ed6b4471308c552fab4e9b303e26967f16785c
 	</div>
 }
 else
 {
 	@foreach (Review review in Model)
 	{
+<<<<<<< HEAD
 		<div class="w-100 d-flex flex-column align-items-center py-2">
 			<div class="review-box row w-50 rounded">
 				<div class="reviews-rating col-2 pt-3 d-flex flex-row justify-content-center rounded-left"><p>@review.Rating</p></div>
@@ -93,3 +104,17 @@ else
 		</form>
 	</div>
 </div>
+=======
+		<div>
+			@review.Rating
+			@review.Review1
+		</div>
+	}
+}
+<form method="post" asp-action="WriteReview">
+	<input name="ImdbId" type="hidden" value="@Context.Request.Query["id"]" />
+	<input name="review1" placeholder="Review..." type="text" />
+	<input name="rating" value="5" type="number" min="1" max="5" onkeydown="return false" />
+	<button type="submit">Review</button>
+</form>
+>>>>>>> a8ed6b4471308c552fab4e9b303e26967f16785c

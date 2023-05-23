@@ -26,7 +26,11 @@ namespace MovieApp.Services
 		// Function that downloads for information about a specific title by Id
 		public async Task<ApiTitleData.TitleResponse> GetMovie(string id)
 		{
+<<<<<<< HEAD
 			return await Download<ApiTitleData.TitleResponse>($"https://imdb-api.com/en/API/Title/k_4556bqwf/{id}");
+=======
+			return await Download<TitleData.TitleResponse>($"https://imdb-api.com/en/API/Title/k_4556bqwf/{id}");
+>>>>>>> a8ed6b4471308c552fab4e9b303e26967f16785c
 		}
 
         // Function that downloads the top 250 movies
