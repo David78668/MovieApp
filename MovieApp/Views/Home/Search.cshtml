@@ -1,23 +1,48 @@
-﻿@model MovieApp.Models.SearchData
+﻿@model ApiSearchData
 
-<h2>Search results for "<strong>@Model.Expression</strong>"</h2>
-<div class="d-flex flex-wrap w-100">
-	@foreach (var Movie in Model.Results)
-	{
-		<div class="p-2 d-flex flex-row w-50 border border-secondary">
-			<div class="py-2 w-25 d-flex justify-content-center align-items-center">
-				<img class="w-75 " src="@Movie.Image"/>
-			</div>
-			<div class="w-75 d-flex flex-column justify-content-center align-items-center">
-				<div class="fs-4">@Movie.Title</div>
-				<div class="fs-5">@Movie.Description</div>
-				<div>@Movie.ResultType</div>
-				<a href="/Home/Detail?id=@Movie.Id">Show details...</a>
-				<div>
-					<button>add to watchlist</button>
-					<button>favorite !</button>
-				</div>
-			</div>
-		</div>
-	}
+<style>
+    .col-md-5{
+        background-color: #181818;
+        border: 1px solid #444444;
+    }
+</style>
+
+<div class="text-center py-4">
+    <h2>Search results for "<strong>@Model.Expression</strong>"</h2>
 </div>
+<div class="container">
+    <div class="row d-flex flex-row justify-content-evenly">
+        @foreach (var Movie in Model.Results)
+        {
+            <div class="col-md-5 p-3 mb-4 rounded">
+                <div class="d-flex flex-row">
+                    <div class="py-2 w-25 d-flex justify-content-center align-items-center">
+                        @if (Movie.Image != "")
+                        {
+                            <img class="w-75" src="@Movie.Image" />
+                        }
+                        else
+                        {
+                            <img class="w-75" src="https://static.displate.com/857x1200/displate/2022-04-15/7422bfe15b3ea7b5933dffd896e9c7f9_46003a1b7353dc7b5a02949bd074432a.jpg" />
+                        }
+                    </div>
+                    <div class="w-75 d-flex flex-column justify-content-center align-items-center">
+                        <div class="fs-4">@Movie.Title</div>
+                        <div class="fs-5">@Movie.Description</div>
+                        <div class="w-100 pt-4 d-flex flex-row justify-content-evenly">
+                            <a href="/Home/Detail?id=@Movie.Id"><button class="btn btn-outline-warning rounded-pill">Detail</button></a>
+                            <form method="post" asp-action="AddToWatchlist">
+                                @Html.Hidden("Id", Movie.Id)
+                                @Html.Hidden("Title", Movie.Title)
+                                @Html.Hidden("Description", Movie.Description)
+                                @Html.Hidden("Image", Movie.Image)
+                                <button type="submit" class="btn btn-outline-primary rounded-pill">Add to watchlist</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

@@ -1,7 +1,53 @@
-﻿@model MovieApp.Models.TitleData.TitleResponse
+﻿@model ApiTitleData.TitleResponse
 
-<div>
-	<h1>@Model.Title</h1>
-	<h2>@Model.Directors</h2>
-	<h3>@Model.Plot</h3>
+<style>
+	.movie-title{
+		font-size: 40px;
+	}
+	.movie-genres {
+		font-size: 20px;
+	}
+	.movie-plot {
+		font-size: 15px;
+	}
+	.movie-image{
+		width: 150px;
+	}
+
+	.movie-button{
+		background-color: #181818;
+	}
+
+	.row{
+		background-color: #181818;
+		border: 1px solid #444444;
+	}
+</style>
+
+<div class="container p-0 w-75">
+	<div class="row w-100 ms-1 mt-5 rounded">
+		<div class="col-3 py-4 ps-5 d-flex align-items-center">
+			<img class="movie-image rounded" src="@Model.Image" />
+		</div>
+		<div class="col-9 py-4 d-flex flex-column">
+			<p class="movie-title">@Model.FullTitle</p>
+			<p class="movie-genres">@Model.Genres</p>
+			<p class="movie-plot">@Model.Plot</p>
+			<p class="align-self-end pe-5 pt-5">Average rating <strong>@Model.ImDbRating</strong> based on @Model.ImDbRatingVotes votes</p>
+		</div>
+	</div>
+	<div class="w-100 d-flex flex-row justify-content-between py-5 ms-2">
+		<div class="w-50 d-flex flex-row justify-content-center">
+			<a class="movie-button w-75 py-2 btn btn-outline-warning rounded" href="/Home/Reviews?id=@Model.Id&movie=@System.Web.HttpUtility.UrlEncode(Model.Title)">Reviews</a>
+		</div>
+		<div class="w-50 d-flex flex-row justify-content-center">
+			<form class="w-100 d-flex flex-row justify-content-center" method="post" asp-action="AddToWatchlist">
+				@Html.Hidden("Id", Model.Id)
+				@Html.Hidden("Title", Model.Title)
+				@Html.Hidden("Description", Model.Year + " " + Model.Directors)
+				@Html.Hidden("Image", Model.Image)
+				<button class="movie-button w-75 py-2 btn btn-outline-primary rounded">Add to watchlist</button>
+			</form>
+		</div>
+	</div>
 </div>

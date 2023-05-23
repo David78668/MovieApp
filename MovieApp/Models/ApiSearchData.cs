@@ -1,17 +1,16 @@
-﻿using MovieApp.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace MovieApp.Models
 {
-    public class SearchData
+    public class ApiSearchData
     {
-        public SearchData()
+        public ApiSearchData()
         {
             ErrorMessage = string.Empty;
             Results = new List<SearchResult>();
         }
 
-        public SearchData(string errorMessage)
+        public ApiSearchData(string errorMessage)
         {
             ErrorMessage = errorMessage;
             Results = null;

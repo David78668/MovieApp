@@ -1,0 +1,55 @@
+﻿@model ApiTopMovies
+<style>
+    .box-text {
+        font-size: 18px;
+    }
+
+    .row {
+        background-color:#181818;
+        border: 1px solid #444444;
+    }
+</style>
+
+<div class="container">
+    <div class="text-center my-4">
+        <form method="post" asp-action="SaveTopMovies">
+            <button type="button" class="btn btn-outline-primary rounded-pill">Update</button>
+        </form>
+    </div>
+
+
+    <p class="text-sm-center my-4">Pro Tip: Click on the movie to get to their details.</p>
+    @foreach (var movie in Model.Items)
+    {
+        <a class="text-decoration-none"  href="/Home/Detail?id=@movie.Id">
+        <div class="row py-2 my-4 text-black align-items-center rounded">
+            <div class="col-2 border-end d-flex justify-content-center align-items-center">
+                @if(movie.Rank == "1")
+                {
+                    <p class="text-center m-0" style="color:#DAA520;"><strong># @movie.Rank</strong></p>
+                }
+                else if (movie.Rank == "2")
+                {
+                        <p class="text-center m-0" style="color:#898989"><strong># @movie.Rank</strong></p>
+                }
+                else if (movie.Rank == "3")
+                {
+                    <p class="text-center m-0" style="color:#CD7F32"><strong># @movie.Rank</strong></p>
+                }
+                else
+                {
+                    <p class="text-center text-white m-0"><strong># @movie.Rank</strong></p>
+                }
+            </div>
+            <div class="col-8 d-flex justify-content-center align-items-center">
+                    <p class="text-center text-white m-0 box-text"><strong>@movie.FullTitle</strong></p>
+            </div>
+            <div class="col-2 border-start d-flex justify-content-center align-items-center">
+                <p class="text-center text-white m-0 box-text"><strong>@movie.ImDbRating</strong></p>
+            </div>
+        </div>
+        </a>
+    }
+</div>
+
+

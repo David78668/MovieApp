@@ -1,0 +1,95 @@
+﻿@using Microsoft.AspNetCore.Http
+@model List<Review>
+
+<style>
+	.movie-title{
+		font-size: 30px;
+	}
+
+	.review-box{
+		background-color: #181818;
+		border: 1px solid #444444;
+	}
+
+	.review-rating{
+		color: white !important;
+		border: 1px solid lightgray !important;
+		font-size:25px;
+		width: 75px;
+		background-color: #444444 !important;
+
+	}
+	.review-textarea{
+		width: 85%;
+		color: white !important;
+		border: 1px solid lightgray !important;
+		background-color: #444444 !important;
+		resize: none;
+	}
+	.review-rating-outof{
+		font-size: 25px;
+	}
+
+	.review-btn{
+		width: 85%;
+		color: white !important;
+		border: 1px solid lightgray !important;
+		background-color: #444444 !important;
+	}
+
+	.review-btn:hover {
+		background-color: gray !important;
+	}
+
+	.reviews-rating {
+		border: 1px solid #444444;
+		font-size: 20px;
+	}
+
+	.reviews-review {
+		border: 1px solid #444444;
+		font-size: 15px;
+	}
+
+
+</style>
+<div class="movie-title py-4 text-center">
+	Reviews for "<strong>@Context.Request.Query["movie"].ToString().Replace("%20", " ")</strong>"
+</div>
+
+@if(Model.Count <= 0)
+{
+	<div class="text-center py-5 display-6">
+		<p>There are no reviews for this title...</p>
+		<p>Be the first one to write one !</p>
+	</div>
+}
+else
+{
+	@foreach (Review review in Model)
+	{
+		<div class="w-100 d-flex flex-column align-items-center py-2">
+			<div class="review-box row w-50 rounded">
+				<div class="reviews-rating col-2 pt-3 d-flex flex-row justify-content-center rounded-left"><p>@review.Rating</p></div>
+				<div class="reviews-review col-10 rounded-right"><p>@review.Review1</p></div>
+			</div>
+		</div>
+	}
+}
+<div class="container w-100 py-5 d-flex flex-row justify-content-center rounded">
+	<div class="review-box w-75 p-3 d-flex flex-row justify-content-center rounded">
+		<form class="row w-100" method="post" asp-action="WriteReview">
+			<input class="" name="ImdbId" type="hidden" value="@Context.Request.Query["id"]" />
+			<input class="" name="movie" type="hidden" value="@Context.Request.Query["movie"]" />
+			<div class="col-2 d-flex flex-row justify-content-center">
+				<input class="form-control shadow-none review-rating" name="rating" value="3" type="number" min="1" max="5" onkeydown="return false" />
+			</div>
+			<div class="col-8 d-flex flex-row justify-content-center align-items-center">
+				<textarea name="review1" class="review-textarea shadow-none span6 rounded" rows="3" placeholder="Review..." required></textarea>
+			</div>
+			<div class="col-2 d-flex flex-row justify-content-center align-items-center">
+				<button class="review-btn py-3 px-2 me-4 btn btn-outline-secondary" type="submit"><Strong>Review</Strong></button>
+			</div>
+		</form>
+	</div>
+</div>

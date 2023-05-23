@@ -7,23 +7,37 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MovieApp.styles.css" asp-append-version="true" />
+    <style>
+        .navbar-nav .nav-item {
+            border-right: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+            .navbar-nav .nav-item:last-child {
+                border-right: none;
+            }
+
+            .navbar-nav .nav-item:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+    </style>
 </head>
-<body>
+<body class="bg-black text-light">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MovieApp</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-black border-bottom box-shadow p-0 mb-3">
+            <div class="container-fluid p-0">
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    <ul class="navbar-nav flex-fill">
+                        <li class="nav-item flex-fill text-center p-1">
+                            <a class="nav-link text-light" asp-controller="Home" asp-action="Index">Search</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <li class="nav-item flex-fill text-center p-1">
+                            <a class="nav-link text-light" asp-controller="Home" asp-action="Watchlist">Watchlist</a>
+                        </li>
+                        <li class="nav-item flex-fill text-center p-1">
+                            <a class="nav-link text-light" asp-controller="Home" asp-action="TopMovies">Top 250 Movies</a>
+                        </li>
+                        <li class="nav-item flex-fill text-center p-1">
+                            <a class="nav-link text-light" asp-controller="Home" asp-action="Index">Search</a>
                         </li>
                     </ul>
                 </div>
@@ -35,12 +49,6 @@
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - MovieApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

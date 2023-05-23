@@ -18,16 +18,22 @@ namespace MovieApp.Services
         }
 
         // Function that searches for titles using the Download function
-        public async Task<SearchData> Search(string input)
+        public async Task<ApiSearchData> Search(string input)
         {
-            return await Download<SearchData>($"https://imdb-api.com/en/API/Search/k_4556bqwf/{input}");
+            return await Download<ApiSearchData>($"https://imdb-api.com/en/API/Search/k_4556bqwf/{input}");
         }
 
 		// Function that downloads for information about a specific title by Id
-		public async Task<TitleData.TitleResponse> GetMovie(string id)
+		public async Task<ApiTitleData.TitleResponse> GetMovie(string id)
 		{
-			return await Download<TitleData>($"https://imdb-api.com/en/API/Title/k_4556bqwf/{id}/FullActor,FullCast,Posters,Images,Trailer,Ratings,Wikipedia,");
+			return await Download<ApiTitleData.TitleResponse>($"https://imdb-api.com/en/API/Title/k_4556bqwf/{id}");
 		}
+
+        // Function that downloads the top 250 movies
+        public async Task<ApiTopMovies> GetTop250Movies()
+        {
+            return await Download<ApiTopMovies>("https://imdb-api.com/en/API/Top250Movies/k_4556bqwf");
+        }
 
         // Function for downloading data from the API using HttpClient
         private async Task<T?> Download<T>(string url)
@@ -41,7 +47,6 @@ namespace MovieApp.Services
                 _logger.LogError($"{url} - {ex.Message}");
             }
             return default(T?);
-
         }
 
     }
